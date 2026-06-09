@@ -1,24 +1,35 @@
 <template>
-    <input type="text" placeholder="Ingrese País" class="form-control my-3" v-model="texto" @keyup="procesarInput">
+  <div class="search-wrapper">
+    <IconField>
+      <InputIcon class="pi pi-search" />
+      <InputText v-model="texto" class="search-input" placeholder="Buscar país por nombre..." @input="procesarInput" />
+    </IconField>
+  </div>
 </template>
 
 <script>
-// Propiedades vue
 import { ref } from 'vue';
-// Propiedades Vuex;
 import { useStore } from 'vuex';
+import IconField from 'primevue/iconfield';
+import InputIcon from 'primevue/inputicon';
+import InputText from 'primevue/inputtext';
 
 export default {
-    name: 'Buscador',
-    setup(){
-        const texto = ref('')
-        const store = useStore()
+  name: 'Buscador',
+  components: { IconField, InputIcon, InputText },
+  setup() {
+    const texto = ref('');
+    const store = useStore();
 
-        const procesarInput = () => {
-            store.dispatch('filtroNombre', texto.value)
-        }
+    const procesarInput = () => {
+      if (texto.value.trim() === '') {
+        store.dispatch('filtrarRegion', store.state.selectedRegion ?? 'Europe');
+      } else {
+        store.dispatch('filtroNombre', texto.value);
+      }
+    };
 
-        return {texto, procesarInput}
-    }
-}
+    return { texto, procesarInput };
+  },
+};
 </script>

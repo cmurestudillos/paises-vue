@@ -1,56 +1,46 @@
 <template>
-  <div class="card h-100 shadow p-3 mb-5 bg-body rounded">
-    <div class="card-body">
-      <h5 class="card-title">{{ pais.name.common }}</h5>
-      <p class="text-center">
-        <img
-          :src="pais.flags.svg"
-          :alt="`Bandera-${pais.name.common}`"
-          :title="`Bandera-${pais.name.common}`"
-          class="img-thumbnail rounded mx-auto d-block" />
-      </p>
-      <div class="card-text">
-        <div class="row mb-4">
-          <div class="col-sm-6">
-            <small><u>Country:</u></small>
-            <span class="badge rounded-pill bg-success text-white">
-              {{ pais.name.common }}
-            </span>
-          </div>
-          <div class="col-sm-6">
-            <small><u>Capital:</u></small>
-            <span class="badge rounded-pill bg-success text-white">
-              {{ pais.capital ? pais.capital[0] : 'N/A' }}
-            </span>
-          </div>
+  <PvCard class="country-card">
+    <template #header>
+      <div class="flag-wrapper">
+        <img :src="pais.flags.svg" :alt="`Bandera de ${pais.name.common}`" class="flag-img" loading="lazy" />
+      </div>
+    </template>
+    <template #content>
+      <p class="card-country-name">{{ pais.name.common }}</p>
+      <p class="card-official-name">{{ pais.name.official }}</p>
+      <div class="card-data">
+        <div class="data-row">
+          <span class="data-label"><i class="pi pi-map-marker" />Capital</span>
+          <PvTag :value="pais.capital ? pais.capital[0] : 'N/A'" severity="success" />
         </div>
-        <div class="row">
-          <div class="col">
-            <small><u>People:</u></small>
-            <span class="badge rounded-pill bg-success text-white">
-              {{ numeroFormato(pais.population) }}
-            </span>
-          </div>
-          <div class="col">
-            <small><u>Continent:</u></small>
-            <span class="badge rounded-pill bg-success text-white">
-              {{ pais.region }}
-            </span>
-          </div>
+        <div class="data-row">
+          <span class="data-label"><i class="pi pi-users" />Población</span>
+          <PvTag :value="numeroFormato(pais.population)" severity="info" />
+        </div>
+        <div class="data-row">
+          <span class="data-label"><i class="pi pi-globe" />Continente</span>
+          <PvTag :value="pais.region" severity="warn" />
         </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </PvCard>
 </template>
 
 <script>
+import PvCard from 'primevue/card';
+import PvTag from 'primevue/tag';
+
 export default {
   name: 'Card',
-  props: ['pais'],
+  components: { PvCard, PvTag },
+  props: {
+    pais: {
+      type: Object,
+      required: true,
+    },
+  },
   setup() {
-    const numeroFormato = num => {
-      return new Intl.NumberFormat('de-DE').format(num);
-    };
+    const numeroFormato = num => new Intl.NumberFormat('es-ES').format(num);
     return { numeroFormato };
   },
 };

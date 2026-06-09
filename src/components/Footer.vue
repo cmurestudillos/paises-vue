@@ -1,25 +1,18 @@
 <template>
-    <footer class="py-5">
-        <div class="container px-4 px-lg-5">
-            <p class="m-0 text-center text-white">
-                Copyright © - Designed and Created by: <em><strong>Carlos Mur</strong></em>
-            </p>
-            <p class="m-0 text-center text-white">
-                <small><em>Version: {{version}}</em></small>            
-            </p>
-        </div>
-    </footer>
+  <footer class="app-footer">
+    <p class="footer-text">Copyright © <strong>Carlos Mur</strong> — InfoPaíses v{{ version }}</p>
+  </footer>
 </template>
 
 <script>
-import packageInfo  from '../../package.json';
+import packageInfo from '../../package.json';
 
 export default {
-    name: 'Footer',
-    data() {
-        return {
-            version: packageInfo.version
-        }
-    }
-}
+  name: 'AppFooter',
+  data() {
+    return {
+      version: packageInfo.version,
+    };
+  },
+};
 </script>

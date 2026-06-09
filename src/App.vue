@@ -1,17 +1,17 @@
 <template>
   <Navbar />
-  <div class="container px-4 px-lg-5">
+  <main class="main-content">
     <Buscador />
     <CardList />
-  </div>
-  <Footer />
+  </main>
+  <AppFooter />
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue';
 import CardList from './components/CardList.vue';
 import Buscador from './components/Buscador.vue';
-import Footer from './components/Footer.vue';
+import AppFooter from './components/Footer.vue';
 
 export default {
   name: 'App',
@@ -19,7 +19,7 @@ export default {
     Navbar,
     CardList,
     Buscador,
-    Footer
-  }
-}
+    AppFooter,
+  },
+};
 </script>

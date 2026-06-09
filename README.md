@@ -1,171 +1,94 @@
-# 🌍 Paises - Vue.js
+# InfoPaíses - Vue.js
 
-Una aplicación web moderna desarrollada con **Vue.js 3** y **Vite** que permite explorar información detallada de países de todo el mundo. Filtra por continente, busca por nombre y descubre datos interesantes sobre población, capitales y más.
+Una SPA desarrollada con **Vue.js 3** y **Vite** que permite explorar información de países de todo el mundo. Filtra por continente, busca por nombre y consulta capital, población y región con una interfaz dark profesional construida con PrimeVue.
 
-![Vue.js](https://img.shields.io/badge/Vue.js-3.x-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-5.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Vue.js](https://img.shields.io/badge/Vue.js-3.5-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![PrimeVue](https://img.shields.io/badge/PrimeVue-4.x-41b883?style=for-the-badge&logo=vue.js&logoColor=white)
 ![Vuex](https://img.shields.io/badge/Vuex-4.x-42b883?style=for-the-badge&logo=vue.js&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![pnpm](https://img.shields.io/badge/pnpm-11.x-F69220?style=for-the-badge&logo=pnpm&logoColor=white)
 
-## ✨ Características
+## Demo
 
-- 🔍 **Búsqueda inteligente** - Busca países por nombre común u oficial
-- 🌐 **Filtros por continente** - Europa, América, Asia, Oceanía y África
-- 📊 **Ordenamiento por población** - Visualiza los países más poblados primero
-- 🎨 **Interfaz moderna** - Diseño responsivo con Bootstrap 5
-- ⚡ **Rendimiento optimizado** - Construido con Vite para máxima velocidad
-- 🗂️ **Gestión de estado** - Vuex para manejo eficiente del estado global
+[https://vue-paises-spa.vercel.app/](https://vue-paises-spa.vercel.app/)
 
-## 🚀 Demo
+## Características
 
-[Ver Demo en Vivo](https://vue-paises-spa.vercel.app/) <!-- Agrega tu URL de deployment aquí -->
+- **Búsqueda en tiempo real** — por nombre común u oficial del país
+- **Filtros por continente** — Europa, América, Asia, Oceanía y África con SelectButton reactivo
+- **Ordenamiento por población** — descendente mediante getter de Vuex
+- **UI dark profesional** — PrimeVue 4 con tema Aura y primario verde personalizado
+- **Estado de carga** — Skeleton cards mientras se obtienen los datos de la API
+- **Rendimiento optimizado** — Vite 5 con chunking vendor separado
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías
 
-- **Vue.js 3** - Framework JavaScript progresivo
-- **Vite** - Build tool ultrarrápido
-- **Vuex 4** - Gestión de estado
-- **Bootstrap 5** - Framework CSS
-- **Composition API** - API moderna de Vue
-- **REST API** - [Countries API Service](https://countries-api-service.vercel.app/api/countries)
+| Tecnología | Versión | Uso |
+|-----------|---------|-----|
+| Vue.js | 3.5 | Framework UI (Options API + Composition API) |
+| Vite | 5.4 | Build tool y dev server |
+| Vuex | 4.1 | Gestión de estado global |
+| PrimeVue | 4.x | Librería de componentes (Card, Tag, SelectButton, InputText, Skeleton) |
+| PrimeIcons | 7.x | Iconografía |
+| ESLint | 9.x | Linting (flat config + eslint-plugin-vue) |
+| Prettier | 3.x | Formateo de código |
+| pnpm | 11.x | Gestor de paquetes |
 
-## 📋 Prerequisitos
+## Instalación
 
-Antes de comenzar, asegúrate de tener instalado:
-
-- [Node.js](https://nodejs.org/) (v14 o superior)
-- [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/)
-
-## 🔧 Instalación
-
-1. **Clona el repositorio**
 ```bash
+# Clonar el repositorio
 git clone https://github.com/cmurestudillos/paises-vue.git
 cd paises-vue
+
+# Instalar dependencias
+pnpm install
+
+# Servidor de desarrollo (http://localhost:8080)
+pnpm dev
 ```
 
-2. **Instala las dependencias**
-```bash
-npm install
-# o
-yarn install
-```
-
-3. **Ejecuta el servidor de desarrollo**
-```bash
-npm run dev
-# o
-yarn dev
-```
-
-4. **Abre tu navegador**
-```
-http://localhost:8080
-```
-
-## 📦 Scripts Disponibles
+## Scripts
 
 ```bash
-# Servidor de desarrollo
-npm run dev
-
-# Compilar para producción
-npm run build
-
-# Vista previa de producción
-npm run preview
-
-# Linting
-npm run lint
+pnpm dev        # Servidor de desarrollo
+pnpm build      # Build de producción en /dist
+pnpm preview    # Previsualizar build local
+pnpm lint       # Verificar errores ESLint
+pnpm lint:fix   # Corregir errores automáticamente
+pnpm format     # Formatear con Prettier
 ```
 
-## 📁 Estructura del Proyecto
+## Estructura
 
 ```
-countries-explorer/
+paises-vue/
+├── index.html                  # Entrada — clase app-dark para tema dark
+├── vite.config.js              # Puerto 8080, alias @, vendor chunk
+├── eslint.config.js            # ESLint 9 flat config
+├── vercel.json                 # Config deploy Vercel
+├── .prettierrc                 # Prettier — singleQuote, printWidth 120
 ├── public/
-│   └── img/
-│       └── logo.png
-├── src/
-│   ├── components/
-│   │   ├── Buscador.vue      # Componente de búsqueda
-│   │   ├── Card.vue           # Tarjeta individual de país
-│   │   ├── CardList.vue       # Lista de tarjetas
-│   │   ├── Footer.vue         # Pie de página
-│   │   └── Navbar.vue         # Barra de navegación
-│   ├── store/
-│   │   └── index.js           # Configuración de Vuex
-│   ├── App.vue                # Componente principal
-│   └── main.js                # Punto de entrada
-├── package.json
-├── vite.config.js
-└── README.md
+│   ├── css/styles.css          # Bootstrap CSS estático (background)
+│   └── img/logo.png
+└── src/
+    ├── main.js                 # PrimeVue config — GreenAura dark preset
+    ├── assets/main.css         # Estilos globales — layout, grid, overrides
+    ├── App.vue
+    ├── store/index.js          # Vuex — paises, filtros, loading, selectedRegion
+    └── components/
+        ├── Navbar.vue          # SelectButton de regiones
+        ├── Buscador.vue        # IconField + InputText
+        ├── CardList.vue        # Grid + Skeleton loading
+        ├── Card.vue            # PvCard + PvTag (capital, población, región)
+        └── Footer.vue          # Versión desde package.json
 ```
 
-## 🎯 Funcionalidades Principales
+## API
 
-### Filtrado por Continente
-Selecciona un continente para ver solo los países de esa región:
-- 🇪🇺 Europa (EU)
-- 🌎 Américas (AM)
-- 🌏 Asia (AS)
-- 🌊 Oceanía (OC)
-- 🌍 África (AF)
+- **Endpoint:** `https://countries-api-service.vercel.app/api/countries`
+- Sin autenticación, sin variables de entorno necesarias
 
-### Búsqueda de Países
-Escribe el nombre de cualquier país en el buscador y obtén resultados en tiempo real.
+## Licencia
 
-### Información Detallada
-Cada tarjeta de país muestra:
-- 🏳️ Bandera oficial
-- 🏛️ Capital
-- 👥 Población formateada
-- 🗺️ Continente/Región
-
-## 🔌 API Utilizada
-
-Este proyecto consume datos de:
-- **Endpoint**: `https://countries-api-service.vercel.app/api/countries`
-- **Documentación**: Proporciona información completa de 240+ países
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Para cambios importantes:
-
-1. Haz un Fork del proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add: nueva característica'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📝 Roadmap
-
-- [ ] Agregar modo oscuro
-- [ ] Implementar filtros combinados
-- [ ] Añadir página de detalles por país
-- [ ] Incluir gráficos de estadísticas
-- [ ] Agregar comparador de países
-- [ ] Implementar favoritos con localStorage
-- [ ] Añadir internacionalización (i18n)
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-## 👨‍💻 Autor
-
-**Carlos Mur**
-
-- GitHub: [@tu-usuario](https://github.com/cmurestudillos)
-
-## 🙏 Agradecimientos
-
-- API de países proporcionada por [Countries API Service](https://countries-api-service.vercel.app)
-- Iconos y recursos de [Bootstrap](https://getbootstrap.com)
-- Comunidad de Vue.js
-
----
-
-⭐ Si te gusta este proyecto, no olvides darle una estrella en GitHub!
-
-**Hecho con ❤️ y Vue.js**
+MIT — [Carlos Mur](https://github.com/cmurestudillos)
