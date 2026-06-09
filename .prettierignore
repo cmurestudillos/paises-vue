@@ -1,16 +1,17 @@
 # Directorios compilados
-/dist
-/build
-/coverage
+dist/
+build/
+coverage/
 
 # Node
-/node_modules
+node_modules/
+
+# Lock files
+pnpm-lock.yaml
 
 # Archivos generados
 *.min.js
 *.min.css
 
 # Otros
-package-lock.json
-yarn.lock
 *.md

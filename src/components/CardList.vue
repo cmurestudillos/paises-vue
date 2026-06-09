@@ -1,32 +1,38 @@
 <template>
-  <div class="row gx-4 gx-lg-5">
-    <div class="col-md-4 mb-5" v-for="pais in paises" :key="pais._id || pais.cca3">
-      <Card :pais="pais" />
-    </div>
+  <p class="results-info">
+    Mostrando <span>{{ paises.length }}</span> países
+  </p>
+
+  <div v-if="loading" class="skeleton-grid">
+    <PvSkeleton v-for="n in 6" :key="n" height="360px" border-radius="12px" />
+  </div>
+
+  <div v-else class="countries-grid">
+    <Card v-for="pais in paises" :key="pais._id || pais.cca3" :pais="pais" />
   </div>
 </template>
 
 <script>
-import Card from './Card.vue';
 import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
+import Card from './Card.vue';
+import PvSkeleton from 'primevue/skeleton';
 
 export default {
   name: 'CardList',
-  components: {
-    Card,
-  },
+  components: { Card, PvSkeleton },
   setup() {
     const store = useStore();
-    const paises = computed(() => {
-      return store.getters.topPaisesPoblacion;
-    });
+
+    const paises = computed(() => store.getters.topPaisesPoblacion);
+    const loading = computed(() => store.getters.isLoading);
 
     onMounted(async () => {
       await store.dispatch('getPaises');
       await store.dispatch('filtrarRegion', 'Europe');
     });
-    return { paises };
+
+    return { paises, loading };
   },
 };
 </script>

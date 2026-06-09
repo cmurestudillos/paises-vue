@@ -1,0 +1,238 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: radial-gradient(ellipse at top left, #0d2818 0%, #0a0a0a 50%, #051a0e 100%);
+  background-attachment: fixed;
+  color: #e2e8f0;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── App header ─────────────────────────────── */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 20, 12, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+  padding: 0.75rem 1.5rem;
+}
+
+.header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.brand-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #22c55e;
+  letter-spacing: -0.02em;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
+.filter-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ─── Main content ───────────────────────────── */
+.main-content {
+  flex: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+}
+
+/* ─── Search bar ─────────────────────────────── */
+.search-wrapper {
+  margin-bottom: 0.75rem;
+}
+
+.search-input {
+  width: 100% !important;
+}
+
+.results-info {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+}
+
+.results-info span {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+/* ─── Countries grid ─────────────────────────── */
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ─── Country card ───────────────────────────── */
+.country-card {
+  background: rgba(15, 25, 18, 0.7) !important;
+  border: 1px solid rgba(34, 197, 94, 0.12) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.country-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 197, 94, 0.4) !important;
+  box-shadow: 0 12px 40px rgba(34, 197, 94, 0.1);
+}
+
+.flag-wrapper {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  background: #0a1a0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flag-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-country-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.card-official-name {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+  line-height: 1.3;
+}
+
+.card-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.data-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.data-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+  min-width: 80px;
+}
+
+.data-label i {
+  color: #22c55e;
+  font-size: 0.75rem;
+}
+
+/* ─── Footer ─────────────────────────────────── */
+.app-footer {
+  border-top: 1px solid rgba(34, 197, 94, 0.1);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  background: rgba(10, 20, 12, 0.5);
+}
+
+.footer-text {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.footer-text strong {
+  color: #22c55e;
+}
+
+/* ─── PrimeVue overrides ─────────────────────── */
+.p-selectbutton .p-button {
+  font-size: 0.8rem !important;
+  padding: 0.4rem 0.9rem !important;
+}
+
+.p-inputtext {
+  background: rgba(15, 25, 18, 0.6) !important;
+  border-color: rgba(34, 197, 94, 0.2) !important;
+  color: #e2e8f0 !important;
+}
+
+.p-inputtext:focus {
+  border-color: #22c55e !important;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.15) !important;
+}
+
+.p-inputtext::placeholder {
+  color: #475569 !important;
+}
+
+.p-tag {
+  font-size: 0.72rem !important;
+}
